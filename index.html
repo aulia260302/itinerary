@@ -9,11 +9,12 @@
 </head>
 <body>
 
-    <header>
+    <header id="mainHeader">
         <a href="#" class="logo">
             <span class="logo-mark">V</span>
             <span class="logo-text">VERVE<em>Itineraries</em></span>
         </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Buka menu" onclick="document.getElementById('mainHeader').classList.toggle('nav-open')">☰</button>
         <nav>
             <a href="#">Dashboard</a>
             <a href="#">Itinerary Tree</a>
@@ -178,5 +179,13 @@
     </div><!-- end main-dashboard -->
 
     <script src="script.js"></script>
+    <script>
+        // Tutup menu burger otomatis setelah salah satu link ditekan
+        document.getElementById('mainHeader').addEventListener('click', function (e) {
+            if (e.target.closest('nav a')) {
+                this.classList.remove('nav-open');
+            }
+        });
+    </script>
 </body>
 </html>
