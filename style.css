@@ -747,25 +747,54 @@ tfoot tr td {
    RESPONSIVE
    ============================================= */
 
+/* Tombol burger — hanya muncul di HP */
+.nav-toggle {
+    display: none;
+    background: var(--blue-ghost);
+    border: 1px solid var(--gray-200);
+    color: var(--navy);
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 4px 12px;
+    border-radius: var(--r-sm);
+    cursor: pointer;
+    font-family: inherit;
+}
+.nav-toggle:active { background: var(--blue-soft); }
+
+/* Cegah scroll horizontal di layar sempit */
+@media (max-width: 768px) {
+    html, body { max-width: 100%; overflow-x: hidden; }
+}
+
 /* ---- Tablet & below ---- */
 @media (max-width: 768px) {
     body { padding: 14px; }
 
-    /* Header jadi menumpuk & bisa wrap */
+    /* Header: logo kiri, burger kanan */
     header {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
         padding: 14px 18px;
     }
+    .nav-toggle { display: block; }
+
+    /* Menu jadi dropdown yang disembunyikan sampai burger ditekan */
     nav {
+        display: none;
         width: 100%;
-        justify-content: flex-start;
-        flex-wrap: wrap;
-        gap: 6px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        margin-top: 4px;
     }
-    nav a { padding: 8px 14px; }
-    .btn-primary-nav { margin-left: 0; }
+    header.nav-open nav { display: flex; }
+    nav a { padding: 12px 14px; border-radius: var(--r-sm); }
+    nav a:hover { background: var(--blue-ghost); }
+    .btn-primary-nav { margin-left: 0; width: 100%; padding: 12px; }
 
     /* Breakdown: bar & donut menumpuk */
     .breakdown-body { grid-template-columns: 1fr; }
