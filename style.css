@@ -747,12 +747,80 @@ tfoot tr td {
    RESPONSIVE
    ============================================= */
 
-@media (max-width: 600px) {
-    body { padding: 12px; }
-    header { padding: 12px 16px; }
+/* ---- Tablet & below ---- */
+@media (max-width: 768px) {
+    body { padding: 14px; }
+
+    /* Header jadi menumpuk & bisa wrap */
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 14px 18px;
+    }
+    nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+    nav a { padding: 8px 14px; }
+    .btn-primary-nav { margin-left: 0; }
+
+    /* Breakdown: bar & donut menumpuk */
+    .breakdown-body { grid-template-columns: 1fr; }
+    .chart-wrapper { margin-top: 8px; }
+
+    /* Progress list biar muat */
+    .progress-item { flex-wrap: wrap; }
+    .category-name {
+        width: auto;
+        min-width: 0;
+        text-align: left;
+        padding-right: 0;
+        flex: 1 1 100%;
+        margin-bottom: 2px;
+    }
+
+    /* Modal jurnal fullscreen: ringkas margin */
+    #jurnal-fullscreen-overlay > div { margin: 10px !important; border-radius: 10px !important; }
+    /* Summary cards jurnal jadi 2 kolom */
+    #jurnal-fullscreen-overlay [style*="repeat(4,1fr)"] {
+        grid-template-columns: 1fr 1fr !important;
+        padding: 16px !important;
+    }
+}
+
+/* ---- Ponsel ---- */
+@media (max-width: 480px) {
+    body { padding: 10px; }
+    header { padding: 12px 14px; }
     .logo-mark { width: 30px; height: 30px; font-size: 0.95rem; }
+    .logo-text { font-size: 1rem; }
+
     .overview-grid { gap: 14px; }
     .breakdown-body { padding: 16px; gap: 16px; }
-    .category-name { width: 110px; min-width: 110px; }
+    .breakdown-panel-header, .table-meta-header { padding: 14px 16px; }
+
+    /* Metric value sedikit lebih kecil */
+    .metric-card { padding: 14px 16px; }
+    .metric-value span:last-child { font-size: 1.05rem; }
+
+    /* Header tabel expense menumpuk */
+    .table-meta-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .person-count { align-self: flex-start; }
+
+    /* Tombol aksi bawah tabel full-width & center */
+    .summary-action-wrapper-outside { justify-content: stretch; }
+    .summary-action-wrapper-outside > div { width: 100%; }
+    .btn-add-row, .btn-save-summary { width: 100%; justify-content: center; }
+
+    /* Summary cards jurnal jadi 1 kolom di ponsel kecil */
+    #jurnal-fullscreen-overlay [style*="repeat(4,1fr)"] {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Modal konfirmasi/hapus tetap pas */
+    .modal-box { padding: 22px; }
 }
 
