@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verve Itineraries — Budget Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">
+            <span class="logo-mark">V</span>
+            <span class="logo-text">VERVE<em>Itineraries</em></span>
+        </a>
+        <nav>
+            <a href="#">Dashboard</a>
+            <a href="#">Itinerary Tree</a>
+            <button class="btn-primary-nav" onclick="setTotalBudget()">Set Budget</button>
+        </nav>
+    </header>
+
+    <div class="main-dashboard">
+
+        <div class="overview-grid">
+
+            <!-- KIRI: SUMMARY CARDS -->
+            <div class="summary-panel">
+                <div class="summary-panel-header">
+                    <span class="panel-eyebrow">Budget Overview</span>
+                    <h2 class="panel-title">My Budget &amp; Expenses</h2>
+                </div>
+
+                <div class="metric-card">
+                    <span class="metric-label">Total Budget</span>
+                    <div class="metric-value">
+                        <span class="metric-currency">Rp</span>
+                        <span id="total-budget">0</span>
+                    </div>
+                </div>
+
+                <div class="metric-card metric-expenses">
+                    <span class="metric-label">Total Expenses</span>
+                    <div class="metric-value">
+                        <span class="metric-currency">Rp</span>
+                        <span id="total-expenses">0</span>
+                    </div>
+                </div>
+
+                <div class="metric-card metric-difference">
+                    <span class="metric-label">Difference</span>
+                    <div class="metric-value">
+                        <span class="metric-currency">Rp</span>
+                        <span id="total-difference">0</span>
+                    </div>
+                </div>
+
+                <div class="metric-card metric-pax">
+                    <span class="metric-label">/Pax &nbsp;<span class="pax-badge"><span id="pax-count-label">0</span> Person</span></span>
+                    <div class="metric-value">
+                        <span class="metric-currency">Rp</span>
+                        <span id="cost-per-pax">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KANAN: BREAKDOWN -->
+            <div class="breakdown-panel">
+                <div class="breakdown-panel-header">
+                    <span class="panel-eyebrow">Spending</span>
+                    <h2 class="panel-title">Breakdown of Expenses</h2>
+                </div>
+
+                <div class="breakdown-body">
+                    <div class="progress-list">
+
+                        <div class="progress-item">
+                            <span class="category-name">Sarana &amp; Prasarana</span>
+                            <div class="progress-bar-wrapper">
+                                <span class="percentage-badge bg-blue" id="pct-sarana">0%</span>
+                                <div class="bar-bg"><div class="bar-fill" id="bar-sarana"></div></div>
+                                <span class="category-amount" id="amt-sarana">0</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <span class="category-name">Penginapan</span>
+                            <div class="progress-bar-wrapper">
+                                <span class="percentage-badge bg-green" id="pct-penginapan">0%</span>
+                                <div class="bar-bg"><div class="bar-fill bg-green" id="bar-penginapan"></div></div>
+                                <span class="category-amount" id="amt-penginapan">0</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <span class="category-name">Kuliner</span>
+                            <div class="progress-bar-wrapper">
+                                <span class="percentage-badge bg-red" id="pct-kuliner">0%</span>
+                                <div class="bar-bg"><div class="bar-fill bg-red" id="bar-kuliner"></div></div>
+                                <span class="category-amount" id="amt-kuliner">0</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <span class="category-name">Dokumentasi &amp; Kes.</span>
+                            <div class="progress-bar-wrapper">
+                                <span class="percentage-badge bg-orange" id="pct-dokkes">0%</span>
+                                <div class="bar-bg"><div class="bar-fill bg-orange" id="bar-dokkes"></div></div>
+                                <span class="category-amount" id="amt-dokkes">0</span>
+                            </div>
+                        </div>
+
+                        <div class="progress-item">
+                            <span class="category-name">Wisata &amp; Penunjang</span>
+                            <div class="progress-bar-wrapper">
+                                <span class="percentage-badge bg-grey" id="pct-wisata">0%</span>
+                                <div class="bar-bg"><div class="bar-fill bg-grey" id="bar-wisata"></div></div>
+                                <span class="category-amount" id="amt-wisata">0</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-wrapper">
+                        <div class="donut-chart" id="donut-visual" style="background: conic-gradient(#E2E8F0 0% 100%);">
+                            <div class="donut-center" id="donut-total-text">Rp0</div>
+                        </div>
+                        <div class="donut-legend">
+                            <div class="legend-item"><span class="legend-dot" style="background:#4F81BD"></span>Sarana</div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#70AD47"></span>Penginapan</div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#9B59B6"></span>Kendaraan</div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#C00000"></span>Kuliner</div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#ED7D31"></span>Dok & Kes</div>
+                            <div class="legend-item"><span class="legend-dot" style="background:#7F7F7F"></span>Wisata</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- end overview-grid -->
+
+        <!-- EXPENSE TABLE -->
+        <div class="table-section-container">
+            <div class="table-meta-header">
+                <div class="table-header-left">
+                    <span class="table-header-title">Expense Log</span>
+                    <span class="table-header-sub">Semua pengeluaran perjalanan</span>
+                </div>
+                <span class="person-count" id="table-pax-count" onclick="setPersonCount()" style="cursor:pointer;">
+                    👥 Set Person: 0
+                </span>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Unit Cost</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="expense-table-body"></tbody>
+                </table>
+            </div>
+
+            <div class="table-footer-action">
+                <button class="btn-add-row" onclick="tambahTransaksi()">
+                    <span class="btn-icon">+</span> Tambah Baris Pengeluaran
+                </button>
+            </div>
+        </div>
+
+    </div><!-- end main-dashboard -->
+
+    <script src="script.js"></script>
+</body>
+</html>
