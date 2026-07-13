@@ -1509,8 +1509,8 @@ function bukaModalEditList(index) {
         
         // Simpan ke LocalStorage dan refresh tabel
         localStorage.setItem("myTravelListsDatabase", JSON.stringify(myListsDatabase));
-        renderTableLists();
-        
+        renderTableLists(currentListFilter);
+
         if (typeof tutupModal === "function") {
             tutupModal();
         } else {
@@ -1520,7 +1520,11 @@ function bukaModalEditList(index) {
 }
 
 // Fungsi Filter Tab Kategori
+// Menyimpan kategori filter yang sedang aktif
+let currentListFilter = "Semua";
+
 function filterKategoriList(kat) {
+    currentListFilter = kat;
     // Sorot tombol yang sedang dipilih dengan efek zoom/bubble
     document.querySelectorAll('.filter-list-btn').forEach(btn => {
         if (btn.dataset.kat === kat) {
@@ -1554,7 +1558,7 @@ function hapusItemFromList(index) {
         onConfirm: () => {
             myListsDatabase.splice(index, 1);
             localStorage.setItem("myTravelListsDatabase", JSON.stringify(myListsDatabase));
-            renderTableLists();
+            renderTableLists(currentListFilter);
         }
     });
 }
@@ -1674,9 +1678,9 @@ function bukaModalTambahList() {
 
         myListsDatabase.push({ kategori: kat, nama: nama, catatan: catatan });
         localStorage.setItem("myTravelListsDatabase", JSON.stringify(myListsDatabase));
-        
-        renderTableLists();
-        
+
+        renderTableLists(currentListFilter);
+
         // Memanggil fungsi tutup modal bawaan kamu
         if (typeof tutupModal === "function") {
             tutupModal();
