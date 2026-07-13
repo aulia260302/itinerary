@@ -747,6 +747,28 @@ tfoot tr td {
    RESPONSIVE
    ============================================= */
 
+/* =============================================
+   FOOTER / WATERMARK
+   ============================================= */
+.site-footer {
+    max-width: 1400px;
+    margin: 8px auto 20px;
+    padding: 18px 16px;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    letter-spacing: 0.3px;
+    border-top: 1px solid var(--gray-200);
+}
+.site-footer strong {
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 /* Tombol burger — hanya muncul di HP */
 .nav-toggle {
     display: none;
